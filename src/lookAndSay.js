@@ -18,7 +18,7 @@ function lookAndSay(n) {
     }
   }
 
-  return Number(`${result}${count}${digit}`)
+  return `${result}${count}${digit}`
 }
 
 function* lookAndSayGenerator(n) {
