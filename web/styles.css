@@ -1,0 +1,25 @@
+body {
+  font-family: monospace;
+}
+
+h1,
+h2 {
+  font-variant: small-caps;
+}
+
+#sequence {
+  font-family: monospace;
+
+  & > li {
+    color: #1818ae;
+    overflow-wrap: anywhere;
+
+    &:nth-child(odd) {
+      color: #c41eaa;
+    }
+
+    &::marker {
+      font-style: italic;
+    }
+  }
+}
