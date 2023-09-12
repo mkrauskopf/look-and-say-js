@@ -7,6 +7,7 @@
   "scripts": {
     "prettier": "prettier -c src && prettier-package-json -l ./package.json",
     "prettier:fix": "prettier -w src && prettier-package-json --write ./package.json",
+    "start": "npx serve",
     "test": "jest"
   },
   "devDependencies": {
