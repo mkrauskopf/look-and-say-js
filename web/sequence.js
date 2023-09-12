@@ -2,6 +2,18 @@ import { lookAndSayGenerator } from 'lookAndSay'
 
 const SEQUENCE_LENGTH = 10
 
+function startSequenceWorker() {
+  const sequenceWorker = new Worker('src/sequenceWorker.js', { type: 'module' })
+  sequenceWorker.onerror = (e) => console.error('Error in the sequence worker:', e)
+
+  const numbersLengthsEl = document.getElementById('numbers-lengths')
+  sequenceWorker.onmessage = (e) => {
+    const numberEl = document.createElement('code')
+    numberEl.textContent = `${e.data} `
+    numbersLengthsEl.appendChild(numberEl)
+  }
+}
+
 function fillSequenceElement() {
   const sequenceEl = document.getElementById('sequence')
   const generator = lookAndSayGenerator(1)
@@ -14,4 +26,5 @@ function fillSequenceElement() {
   }
 }
 
+startSequenceWorker()
 fillSequenceElement()

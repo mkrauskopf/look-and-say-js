@@ -23,3 +23,14 @@ h2 {
     }
   }
 }
+
+#numbers-lengths {
+  padding: 1em;
+  color: #1818ae;
+
+  & > code {
+    &:nth-child(odd) {
+      color: #c41eaa;
+    }
+  }
+}
