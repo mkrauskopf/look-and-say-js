@@ -1,9 +1,19 @@
+import { Actions } from '/web/shared.js'
 import { lookAndSayGenerator } from 'lookAndSay'
 
 const SEQUENCE_LENGTH = 10
 
+let stopped = false
+
+const getRunnerSwitchElement = () => document.getElementById('runner-switch')
+
+function setRunnerSwitchText() {
+  getRunnerSwitchElement().innerHTML = `${stopped ? 'Start' : 'Stop'} sequence generation`
+}
+
 function startSequenceWorker() {
-  const sequenceWorker = new Worker('src/sequenceWorker.js', { type: 'module' })
+  setRunnerSwitchText()
+  const sequenceWorker = new Worker('web/sequenceWorker.js', { type: 'module' })
   sequenceWorker.onerror = (e) => console.error('Error in the sequence worker:', e)
 
   const numbersLengthsEl = document.getElementById('numbers-lengths')
@@ -12,6 +22,17 @@ function startSequenceWorker() {
     numberEl.textContent = `${e.data} `
     numbersLengthsEl.appendChild(numberEl)
   }
+
+  function activateRunnerSwitch() {
+    const runnerSwitchButton = getRunnerSwitchElement()
+    runnerSwitchButton.addEventListener('click', (e) => {
+      sequenceWorker.postMessage(stopped ? Actions.Start : Actions.Stop)
+      stopped = !stopped
+      setRunnerSwitchText()
+    })
+  }
+
+  activateRunnerSwitch()
 }
 
 function fillSequenceElement() {
