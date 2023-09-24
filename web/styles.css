@@ -1,5 +1,14 @@
+:root {
+  --main-font: monospace;
+
+  --even-color: #1818ae;
+  --odd-color: #c41eaa;
+
+  --gap-size: 1em;
+}
+
 body {
-  font-family: monospace;
+  font-family: var(--main-font);
 }
 
 h1,
@@ -8,14 +17,14 @@ h2 {
 }
 
 #sequence {
-  font-family: monospace;
+  font-family: var(--main-font);
 
   & > li {
-    color: #1818ae;
+    color: var(--even-color);
     overflow-wrap: anywhere;
 
     &:nth-child(odd) {
-      color: #c41eaa;
+      color: var(--odd-color);
     }
 
     &::marker {
@@ -27,20 +36,20 @@ h2 {
 #web-worker-section {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: var(--gap-size);
 }
 
 #numbers-lengths {
-  padding: 0 1em;
-  color: #1818ae;
+  padding: 0 var(--gap-size);
+  color: var(--even-color);
 
   & > code {
     &:nth-child(odd) {
-      color: #c41eaa;
+      color: var(--odd-color);
     }
   }
 }
 
 #sequence-length {
-  color: #1818ae;
+  color: var(--even-color);
 }
