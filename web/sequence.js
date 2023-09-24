@@ -28,7 +28,7 @@ function startSequenceWorker() {
 
   function activateRunnerSwitch() {
     const runnerSwitchButton = getRunnerSwitchElement()
-    runnerSwitchButton.addEventListener('click', (e) => {
+    runnerSwitchButton.addEventListener('click', (_e) => {
       sequenceWorker.postMessage(stopped ? Actions.Start : Actions.Stop)
       stopped = !stopped
       setRunnerSwitchText()

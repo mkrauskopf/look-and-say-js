@@ -1,14 +1,28 @@
 :root {
   --main-font: monospace;
 
-  --even-color: #1818ae;
+  /* Light theme variables */
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --main-color: #1818ae;
   --odd-color: #c41eaa;
 
   --gap-size: 1em;
 }
 
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --main-color: #aaa;
+  --odd-color: #dda;
+}
+
 body {
   font-family: var(--main-font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 1em;
 }
 
 h1,
@@ -16,11 +30,18 @@ h2 {
   font-variant: small-caps;
 }
 
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #sequence {
   font-family: var(--main-font);
 
   & > li {
-    color: var(--even-color);
+    color: var(--main-color);
     overflow-wrap: anywhere;
 
     &:nth-child(odd) {
@@ -41,7 +62,7 @@ h2 {
 
 #numbers-lengths {
   padding: 0 var(--gap-size);
-  color: var(--even-color);
+  color: var(--main-color);
 
   & > code {
     &:nth-child(odd) {
@@ -51,5 +72,5 @@ h2 {
 }
 
 #sequence-length {
-  color: var(--even-color);
+  color: var(--main-color);
 }
