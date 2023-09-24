@@ -12,6 +12,7 @@ function setRunnerSwitchText() {
 }
 
 function startSequenceWorker() {
+  let lengthOfSequence = 0
   setRunnerSwitchText()
   const sequenceWorker = new Worker('web/sequenceWorker.js', { type: 'module' })
   sequenceWorker.onerror = (e) => console.error('Error in the sequence worker:', e)
@@ -21,6 +22,8 @@ function startSequenceWorker() {
     const numberEl = document.createElement('code')
     numberEl.textContent = `${e.data} `
     numbersLengthsEl.appendChild(numberEl)
+
+    document.getElementById('sequence-length').textContent = String(++lengthOfSequence)
   }
 
   function activateRunnerSwitch() {

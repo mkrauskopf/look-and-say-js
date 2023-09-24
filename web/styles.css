@@ -24,8 +24,14 @@ h2 {
   }
 }
 
+#web-worker-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 #numbers-lengths {
-  padding: 1em;
+  padding: 0 1em;
   color: #1818ae;
 
   & > code {
@@ -33,4 +39,8 @@ h2 {
       color: #c41eaa;
     }
   }
+}
+
+#sequence-length {
+  color: #1818ae;
 }
